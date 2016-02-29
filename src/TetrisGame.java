@@ -15,31 +15,31 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 /**
- Есть недоработки, в перспективе надеюсь будет на Fx=)
+ Р•СЃС‚СЊ РЅРµРґРѕСЂР°Р±РѕС‚РєРё, РІ РїРµСЂСЃРїРµРєС‚РёРІРµ РЅР°РґРµСЋСЃСЊ Р±СѓРґРµС‚ РЅР° Fx=)
  */
 
 public class TetrisGame extends JPanel implements ActionListener{
     static JFrame frame;
     private int SPEED = 3;
-    private final static int SCALE = 30; // масштаб
-    private final static int WIDTH = 10; // ширина
-    private final static int HEIGHT = 20; // высота
-    private Random rand = new Random(); // для рандомного выпадения фигурок
+    private final static int SCALE = 30; // РјР°СЃС€С‚Р°Р±
+    private final static int WIDTH = 10; // С€РёСЂРёРЅР°
+    private final static int HEIGHT = 20; // РІС‹СЃРѕС‚Р°
+    private Random rand = new Random(); // РґР»СЏ СЂР°РЅРґРѕРјРЅРѕРіРѕ РІС‹РїР°РґРµРЅРёСЏ С„РёРіСѓСЂРѕРє
     private Timer t = new javax.swing.Timer(1000/SPEED, this);
-    private int[][] cord = new int[4][4]; // матриц одной фигуры
-    private int[][] field = new int[WIDTH][HEIGHT]; // матрица стоящих на дне стакана фигур
-    private int check; // проверка на какой	координате надо остановиться
+    private int[][] cord = new int[4][4]; // РјР°С‚СЂРёС† РѕРґРЅРѕР№ С„РёРіСѓСЂС‹
+    private int[][] field = new int[WIDTH][HEIGHT]; // РјР°С‚СЂРёС†Р° СЃС‚РѕСЏС‰РёС… РЅР° РґРЅРµ СЃС‚Р°РєР°РЅР° С„РёРіСѓСЂ
+    private int check; // РїСЂРѕРІРµСЂРєР° РЅР° РєР°РєРѕР№	РєРѕРѕСЂРґРёРЅР°С‚Рµ РЅР°РґРѕ РѕСЃС‚Р°РЅРѕРІРёС‚СЊСЃСЏ
     private Color color;
-    private int esc; // решает останавливать или продолжать игру при нажатии esc
+    private int esc; // СЂРµС€Р°РµС‚ РѕСЃС‚Р°РЅР°РІР»РёРІР°С‚СЊ РёР»Рё РїСЂРѕРґРѕР»Р¶Р°С‚СЊ РёРіСЂСѓ РїСЂРё РЅР°Р¶Р°С‚РёРё esc
     /**
-     * Текущее место нахождение матрицы cord на поле
+     * РўРµРєСѓС‰РµРµ РјРµСЃС‚Рѕ РЅР°С…РѕР¶РґРµРЅРёРµ РјР°С‚СЂРёС†С‹ cord РЅР° РїРѕР»Рµ
      */
     private int locationX = SCALE*3;
     private int locationY = -30;
     private Figure f = new Figure();
     private int figure;
     private int[][] field1;
-    private int posture; // текущая поза фигурки
+    private int posture; // С‚РµРєСѓС‰Р°СЏ РїРѕР·Р° С„РёРіСѓСЂРєРё
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable(){
@@ -57,7 +57,7 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Конструктор определяющий панель
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РѕРїСЂРµРґРµР»СЏСЋС‰РёР№ РїР°РЅРµР»СЊ
      */
     public TetrisGame() {
         setSize(frame.getWidth(), frame.getHeight());
@@ -67,10 +67,10 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Ход фигур тетриса
+     * РҐРѕРґ С„РёРіСѓСЂ С‚РµС‚СЂРёСЃР°
      */
     private int[][] move(int[][] cord, int posture, boolean isLocation){
-        if(figure==1){ // отрисовываем ровную фигуру ----
+        if(figure==1){ // РѕС‚СЂРёСЃРѕРІС‹РІР°РµРј СЂРѕРІРЅСѓСЋ С„РёРіСѓСЂСѓ ----
             if(posture == 0){
                 cord = f.I();
                 check = 525;
@@ -82,7 +82,7 @@ public class TetrisGame extends JPanel implements ActionListener{
             repaint();
         }
 
-        else if(figure==2){ // отрисовываем ботинок |_
+        else if(figure==2){ // РѕС‚СЂРёСЃРѕРІС‹РІР°РµРј Р±РѕС‚РёРЅРѕРє |_
             if(posture == 0){
                 cord = f.J();
                 check = 525;
@@ -99,7 +99,7 @@ public class TetrisGame extends JPanel implements ActionListener{
             repaint();
         }
 
-        else if(figure==3){ // отрисовываем T
+        else if(figure==3){ // РѕС‚СЂРёСЃРѕРІС‹РІР°РµРј T
             if(posture == 0){
                 cord = f.T();
                 check = 525;
@@ -117,13 +117,13 @@ public class TetrisGame extends JPanel implements ActionListener{
 
         }
 
-        else if(figure==4){ // отрисовываем квадрат ||
+        else if(figure==4){ // РѕС‚СЂРёСЃРѕРІС‹РІР°РµРј РєРІР°РґСЂР°С‚ ||
             cord = f.O();
             check = 525;
             repaint();
         }
 
-        else if(figure==5){ // отрисовываем -_
+        else if(figure==5){ // РѕС‚СЂРёСЃРѕРІС‹РІР°РµРј -_
             if(posture == 0){
                 cord = f.Z();
                 check = 525;
@@ -166,14 +166,14 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Слушатель таймера
+     * РЎР»СѓС€Р°С‚РµР»СЊ С‚Р°Р№РјРµСЂР°
      */
     @Override
     public void actionPerformed(ActionEvent e){
         checkStop();
         if(checkGameOver()) t.stop();
         /**
-         * Если фигурка только выпадает или игра началась
+         * Р•СЃР»Рё С„РёРіСѓСЂРєР° С‚РѕР»СЊРєРѕ РІС‹РїР°РґР°РµС‚ РёР»Рё РёРіСЂР° РЅР°С‡Р°Р»Р°СЃСЊ
          */
         if(locationY == -30){
             figure = generateFigure();
@@ -181,7 +181,7 @@ public class TetrisGame extends JPanel implements ActionListener{
             locationX = SCALE*3;
         }
         /**
-         * Если достигнуто дно стакана и на клетку ниже уже стоит фигура
+         * Р•СЃР»Рё РґРѕСЃС‚РёРіРЅСѓС‚Рѕ РґРЅРѕ СЃС‚Р°РєР°РЅР° Рё РЅР° РєР»РµС‚РєСѓ РЅРёР¶Рµ СѓР¶Рµ СЃС‚РѕРёС‚ С„РёРіСѓСЂР°
          */
         if(locationY >=check){
             clearCord();
@@ -203,7 +203,7 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Задает цвет фигурам
+     * Р—Р°РґР°РµС‚ С†РІРµС‚ С„РёРіСѓСЂР°Рј
      */
     private Color figureColor(){
         switch(figure){
@@ -233,7 +233,7 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Задает цвет стоящим элементам на поле
+     * Р—Р°РґР°РµС‚ С†РІРµС‚ СЃС‚РѕСЏС‰РёРј СЌР»РµРјРµРЅС‚Р°Рј РЅР° РїРѕР»Рµ
      */
     private Color fieldColor(int i, int j){
         switch(field[i][j]){
@@ -263,19 +263,19 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Проверка следующей клетки, если она уже занята то останавливаемся
+     * РџСЂРѕРІРµСЂРєР° СЃР»РµРґСѓСЋС‰РµР№ РєР»РµС‚РєРё, РµСЃР»Рё РѕРЅР° СѓР¶Рµ Р·Р°РЅСЏС‚Р° С‚Рѕ РѕСЃС‚Р°РЅР°РІР»РёРІР°РµРјСЃСЏ
      */
     private void checkStop(){
         int x;
         int y;
-        stop: for(int i = 3; i >= 0; i--){ // пролистываемся
+        stop: for(int i = 3; i >= 0; i--){ // РїСЂРѕР»РёСЃС‚С‹РІР°РµРјСЃСЏ
             for(int j = 3; j>=0; j--){
-                if(cord[i][j]>0){ // если cord[i][j] не пустая клетка(больше 0)
+                if(cord[i][j]>0){ // РµСЃР»Рё cord[i][j] РЅРµ РїСѓСЃС‚Р°СЏ РєР»РµС‚РєР°(Р±РѕР»СЊС€Рµ 0)
                     x = locationX/SCALE+i;
-                    y = locationY/SCALE+j+1; // то узнаем следующую кледку
-                    if(y-1<19){ // если текущая позиция не равняется последней
-                        if(field[x][y]>0){ // если она не пустая
-                            check = locationY; // то check будет равняться текущему местоположению
+                    y = locationY/SCALE+j+1; // С‚Рѕ СѓР·РЅР°РµРј СЃР»РµРґСѓСЋС‰СѓСЋ РєР»РµРґРєСѓ
+                    if(y-1<19){ // РµСЃР»Рё С‚РµРєСѓС‰Р°СЏ РїРѕР·РёС†РёСЏ РЅРµ СЂР°РІРЅСЏРµС‚СЃСЏ РїРѕСЃР»РµРґРЅРµР№
+                        if(field[x][y]>0){ // РµСЃР»Рё РѕРЅР° РЅРµ РїСѓСЃС‚Р°СЏ
+                            check = locationY; // С‚Рѕ check Р±СѓРґРµС‚ СЂР°РІРЅСЏС‚СЊСЃСЏ С‚РµРєСѓС‰РµРјСѓ РјРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёСЋ
                             addField();
                             break stop;
                         }
@@ -286,39 +286,39 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Добавляем на поле стоящие фигуры
+     * Р”РѕР±Р°РІР»СЏРµРј РЅР° РїРѕР»Рµ СЃС‚РѕСЏС‰РёРµ С„РёРіСѓСЂС‹
      */
     private void addField(){
         for(int i = 0;i<cord.length;i++){
             for(int j = 0;j<cord[i].length;j++){
                 if(cord[i][j]>0 ){
-                    int x = locationX/SCALE+i; // узнаем каждый на поле элелемент фигурки
+                    int x = locationX/SCALE+i; // СѓР·РЅР°РµРј РєР°Р¶РґС‹Р№ РЅР° РїРѕР»Рµ СЌР»РµР»РµРјРµРЅС‚ С„РёРіСѓСЂРєРё
                     int y = locationY/SCALE+j;
-                    field[x][y] = figure; // и переносим в матрицу 10x15
+                    field[x][y] = figure; // Рё РїРµСЂРµРЅРѕСЃРёРј РІ РјР°С‚СЂРёС†Сѓ 10x15
                 }
             }
         }
     }
 
     /**
-     * Проверяет весь ряд на элементы, если ряд заполнен от 0 до 10
-     * то этот ряд удаляется и верхние стоящие ряды сдвигаются вниз
+     * РџСЂРѕРІРµСЂСЏРµС‚ РІРµСЃСЊ СЂСЏРґ РЅР° СЌР»РµРјРµРЅС‚С‹, РµСЃР»Рё СЂСЏРґ Р·Р°РїРѕР»РЅРµРЅ РѕС‚ 0 РґРѕ 10
+     * С‚Рѕ СЌС‚РѕС‚ СЂСЏРґ СѓРґР°Р»СЏРµС‚СЃСЏ Рё РІРµСЂС…РЅРёРµ СЃС‚РѕСЏС‰РёРµ СЂСЏРґС‹ СЃРґРІРёРіР°СЋС‚СЃСЏ РІРЅРёР·
      */
     private void checkClears(){
-        int check = 0; // проверка на заполнение всего ряда фигурками
+        int check = 0; // РїСЂРѕРІРµСЂРєР° РЅР° Р·Р°РїРѕР»РЅРµРЅРёРµ РІСЃРµРіРѕ СЂСЏРґР° С„РёРіСѓСЂРєР°РјРё
         int c = 0; //
         field1 = new int[WIDTH][HEIGHT];
-        for(int j=0;j<HEIGHT;j++,check=0){ // пробегаемся в поиске заполненого фигурами ряда
+        for(int j=0;j<HEIGHT;j++,check=0){ // РїСЂРѕР±РµРіР°РµРјСЃСЏ РІ РїРѕРёСЃРєРµ Р·Р°РїРѕР»РЅРµРЅРѕРіРѕ С„РёРіСѓСЂР°РјРё СЂСЏРґР°
             for(int i=0;i<WIDTH;i++){
                 if(field[i][j]>0) check++;
-                if(check == 10){ // если весь ряд заполнен фигурками
+                if(check == 10){ // РµСЃР»Рё РІРµСЃСЊ СЂСЏРґ Р·Р°РїРѕР»РЅРµРЅ С„РёРіСѓСЂРєР°РјРё
                     int row = 0;
                     for(int t=0;t<10;t++){
-                        field[t][j] = 0; // обнуляем ряд
+                        field[t][j] = 0; // РѕР±РЅСѓР»СЏРµРј СЂСЏРґ
                         row = j;
                     }
 
-                    for(int d = HEIGHT-1;d>row;d--){ // все ряды которые ниже удаляемого ряда переносим в массив
+                    for(int d = HEIGHT-1;d>row;d--){ // РІСЃРµ СЂСЏРґС‹ РєРѕС‚РѕСЂС‹Рµ РЅРёР¶Рµ СѓРґР°Р»СЏРµРјРѕРіРѕ СЂСЏРґР° РїРµСЂРµРЅРѕСЃРёРј РІ РјР°СЃСЃРёРІ
                         for(int s = 0;s<WIDTH;s++){
                             field1[s][d] = field[s][d];
                             field[s][d] = 0;
@@ -329,7 +329,7 @@ public class TetrisGame extends JPanel implements ActionListener{
                         for(int s = 0;s<WIDTH;s++){
                             if(field[s][d]>0){
                                 if(d == 19) return;
-                                field1[s][d+1] = field[s][d]; // вышележащие ряды сдвигаем вниз
+                                field1[s][d+1] = field[s][d]; // РІС‹С€РµР»РµР¶Р°С‰РёРµ СЂСЏРґС‹ СЃРґРІРёРіР°РµРј РІРЅРёР·
                                 field[s][d] = 0;
                                 c++;
                             }
@@ -342,20 +342,20 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Обнуляем массив
+     * РћР±РЅСѓР»СЏРµРј РјР°СЃСЃРёРІ
      */
     private void clearCord(){
         cord = new int [4][4];
     }
 
     /**
-     * Рандомное генерирование фигуры на панели
-     * 1 - ровная фигура ----
+     * Р Р°РЅРґРѕРјРЅРѕРµ РіРµРЅРµСЂРёСЂРѕРІР°РЅРёРµ С„РёРіСѓСЂС‹ РЅР° РїР°РЅРµР»Рё
+     * 1 - СЂРѕРІРЅР°СЏ С„РёРіСѓСЂР° ----
      * 2 - |_
      * 3 - -|-
      * 4 - ||
      * 5 - -_
-     * @return число фигуры
+     * @return С‡РёСЃР»Рѕ С„РёРіСѓСЂС‹
      */
     private int generateFigure(){
         int figure;
@@ -367,35 +367,35 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Отрисовка фигур на панели
+     * РћС‚СЂРёСЃРѕРІРєР° С„РёРіСѓСЂ РЅР° РїР°РЅРµР»Рё
      */
     @Override
     public void paint(Graphics g){
         Graphics2D g2 = (Graphics2D) g;
 
         g2.setColor(Color.WHITE);
-        g2.fillRect(0, 0, WIDTH*SCALE, HEIGHT*SCALE); // очищаем поле
+        g2.fillRect(0, 0, WIDTH*SCALE, HEIGHT*SCALE); // РѕС‡РёС‰Р°РµРј РїРѕР»Рµ
 
-        // Отрисовываем все элементы которые больше 1
+        // РћС‚СЂРёСЃРѕРІС‹РІР°РµРј РІСЃРµ СЌР»РµРјРµРЅС‚С‹ РєРѕС‚РѕСЂС‹Рµ Р±РѕР»СЊС€Рµ 1
         for(int i=0;i<cord.length;i++){ // x
             for(int j=0;j<cord[i].length;j++){ // y
                 if(cord[i][j]>0 ){
                     /**
-                     * Если фигура на дне стакана
+                     * Р•СЃР»Рё С„РёРіСѓСЂР° РЅР° РґРЅРµ СЃС‚Р°РєР°РЅР°
                      */
                     if(locationY >= check){
-                        int x = locationX/SCALE+i; // узнаем каждый элелемент фигурки
+                        int x = locationX/SCALE+i; // СѓР·РЅР°РµРј РєР°Р¶РґС‹Р№ СЌР»РµР»РµРјРµРЅС‚ С„РёРіСѓСЂРєРё
                         int y = locationY/SCALE+j;
-                        field[x][y] = figure; // и переносим в матрицу 10x15
+                        field[x][y] = figure; // Рё РїРµСЂРµРЅРѕСЃРёРј РІ РјР°С‚СЂРёС†Сѓ 10x15
                     }
 
                     g2.setColor(figureColor());
-                    g2.fill3DRect(SCALE*i+locationX+1,SCALE*j+locationY+1, SCALE, SCALE, true); // рисуем элемент фигурки относительно текущей location
+                    g2.fill3DRect(SCALE*i+locationX+1,SCALE*j+locationY+1, SCALE, SCALE, true); // СЂРёСЃСѓРµРј СЌР»РµРјРµРЅС‚ С„РёРіСѓСЂРєРё РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ С‚РµРєСѓС‰РµР№ location
                 }
             }
         }
 
-        // отрисовываем стоящие на месте фигурки
+        // РѕС‚СЂРёСЃРѕРІС‹РІР°РµРј СЃС‚РѕСЏС‰РёРµ РЅР° РјРµСЃС‚Рµ С„РёРіСѓСЂРєРё
         for(int i=0;i<field.length;i++){ // x
             for(int j=0;j<field[i].length;j++){ // y
                 if(field[i][j]>0 ){
@@ -407,8 +407,8 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Изменение позы фигуры по переменной,
-     * если posture инкрементится то поза фигуры меняется
+     * РР·РјРµРЅРµРЅРёРµ РїРѕР·С‹ С„РёРіСѓСЂС‹ РїРѕ РїРµСЂРµРјРµРЅРЅРѕР№,
+     * РµСЃР»Рё posture РёРЅРєСЂРµРјРµРЅС‚РёС‚СЃСЏ С‚Рѕ РїРѕР·Р° С„РёРіСѓСЂС‹ РјРµРЅСЏРµС‚СЃСЏ
      */
     private int setPosture(int posture){
         if(figure == 1){
@@ -444,13 +444,13 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Проверка на то если фигурка изменит позу
-     * не влезет ли она в стену или другую фигурку
-     * @return true если не влезет и можно изменить позу, false если нельзя
+     * РџСЂРѕРІРµСЂРєР° РЅР° С‚Рѕ РµСЃР»Рё С„РёРіСѓСЂРєР° РёР·РјРµРЅРёС‚ РїРѕР·Сѓ
+     * РЅРµ РІР»РµР·РµС‚ Р»Рё РѕРЅР° РІ СЃС‚РµРЅСѓ РёР»Рё РґСЂСѓРіСѓСЋ С„РёРіСѓСЂРєСѓ
+     * @return true РµСЃР»Рё РЅРµ РІР»РµР·РµС‚ Рё РјРѕР¶РЅРѕ РёР·РјРµРЅРёС‚СЊ РїРѕР·Сѓ, false РµСЃР»Рё РЅРµР»СЊР·СЏ
      */
     private boolean checkPosture(){
         int posture1 = setPosture(posture);
-        int[][] cord1 = move(cord, posture1, false); // для тестирования следующей позы фигуры
+        int[][] cord1 = move(cord, posture1, false); // РґР»СЏ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ СЃР»РµРґСѓСЋС‰РµР№ РїРѕР·С‹ С„РёРіСѓСЂС‹
         int x;
         int y;
         for(int i=0;i<cord1.length;i++){
@@ -468,14 +468,14 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Метод определяет можно ли двигаться вправо
-     * @return Если справа есть фигурки или стенка то возвращает false иначе true
+     * РњРµС‚РѕРґ РѕРїСЂРµРґРµР»СЏРµС‚ РјРѕР¶РЅРѕ Р»Рё РґРІРёРіР°С‚СЊСЃСЏ РІРїСЂР°РІРѕ
+     * @return Р•СЃР»Рё СЃРїСЂР°РІР° РµСЃС‚СЊ С„РёРіСѓСЂРєРё РёР»Рё СЃС‚РµРЅРєР° С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ false РёРЅР°С‡Рµ true
      */
     private boolean checkRight(){
         for(int i=0;i<cord.length;i++){
             for(int j=0;j<cord[i].length;j++){
                 if(cord[i][j]>0){
-                    int x = locationX/SCALE+i; // узнаем текущую координату по x
+                    int x = locationX/SCALE+i; // СѓР·РЅР°РµРј С‚РµРєСѓС‰СѓСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ РїРѕ x
                     int y = locationY/SCALE+j;
                     if(x==9){
                         return false;
@@ -490,19 +490,19 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Метод определяет можно ли двигаться влево
-     * @return Если слева есть фигурки или стенка то возвращает false иначе true
+     * РњРµС‚РѕРґ РѕРїСЂРµРґРµР»СЏРµС‚ РјРѕР¶РЅРѕ Р»Рё РґРІРёРіР°С‚СЊСЃСЏ РІР»РµРІРѕ
+     * @return Р•СЃР»Рё СЃР»РµРІР° РµСЃС‚СЊ С„РёРіСѓСЂРєРё РёР»Рё СЃС‚РµРЅРєР° С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ false РёРЅР°С‡Рµ true
      */
     private boolean checkLeft(){
         for(int i=0;i<cord.length;i++){
             for(int j=0;j<cord[i].length;j++){
                 if(cord[i][j]>0){
-                    int x = locationX/SCALE+i; // узнаем текущую координату по x
+                    int x = locationX/SCALE+i; // СѓР·РЅР°РµРј С‚РµРєСѓС‰СѓСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ РїРѕ x
                     int y = locationY/SCALE+j;
-                    if(x==0){ // чекаем стенку
+                    if(x==0){ // С‡РµРєР°РµРј СЃС‚РµРЅРєСѓ
                         return false;
                     }
-                    if(field[x-1][y]>0){ // чекам следующий элемент слева если он на шаг влево - возвращаем false
+                    if(field[x-1][y]>0){ // С‡РµРєР°Рј СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚ СЃР»РµРІР° РµСЃР»Рё РѕРЅ РЅР° С€Р°Рі РІР»РµРІРѕ - РІРѕР·РІСЂР°С‰Р°РµРј false
                         return false;
                     }
                 }
@@ -512,7 +512,7 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Класс слушатель клавиатуры
+     * РљР»Р°СЃСЃ СЃР»СѓС€Р°С‚РµР»СЊ РєР»Р°РІРёР°С‚СѓСЂС‹
      */
     class KeyBoard extends KeyAdapter{
         @Override
@@ -534,10 +534,10 @@ public class TetrisGame extends JPanel implements ActionListener{
                 SPEED = 13;
                 t.setDelay(1000/SPEED);
             }
-            if(key == KeyEvent.VK_UP){ // изменение позы фигуры
+            if(key == KeyEvent.VK_UP){ // РёР·РјРµРЅРµРЅРёРµ РїРѕР·С‹ С„РёРіСѓСЂС‹
                 if(checkPosture()) posture = setPosture(posture);
             }
-            if(key == KeyEvent.VK_ESCAPE){ // стоп игры
+            if(key == KeyEvent.VK_ESCAPE){ // СЃС‚РѕРї РёРіСЂС‹
                 ++esc;
                 if(esc%2==1) t.stop();
                 if(esc%2==0) t.restart();
@@ -545,7 +545,7 @@ public class TetrisGame extends JPanel implements ActionListener{
         }
 
         @Override
-        public void keyReleased(KeyEvent e){ // ускорение
+        public void keyReleased(KeyEvent e){ // СѓСЃРєРѕСЂРµРЅРёРµ
             SPEED = 3;
             t.setDelay(1000/SPEED);
         }
