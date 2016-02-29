@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 /**
- Есть недоработки, в перспективе надеюсь будет на Fx=)
+  Есть недоработки, в перспективе надеюсь будет на Fx=)
  */
 
 public class TetrisGame extends JPanel implements ActionListener{
