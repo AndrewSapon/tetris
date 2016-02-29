@@ -4,8 +4,8 @@ public class Figure {
     public int cord[][] = new int[x][y];
 
     /**
-     * Отрисовываем ровную фигуру ----
-     * @return массив
+      Отрисовываем ровную фигуру ----
+      @return массив
      */
 
     public int[][] I(){ // другая поза фигурки
@@ -27,7 +27,7 @@ public class Figure {
     }
 
     /**
-     * Отрисовываем ботинок
+      Отрисовываем ботинок
      */
     public int[][] J(){
         clearCord();
@@ -63,7 +63,7 @@ public class Figure {
     }
 
     /**
-     * Отрисовываем T
+      Отрисовываем T
      */
     public int[][] T(){
         clearCord();
@@ -99,7 +99,7 @@ public class Figure {
     }
 
     /**
-     *  Отрисовываем квадратик ||
+       Отрисовываем квадратик ||
      */
     public int[][] O(){
         clearCord();
@@ -111,7 +111,7 @@ public class Figure {
     }
 
     /**
-     * Отрисовываем -_
+      Отрисовываем -_
      */
     public int[][] Z(){
         clearCord();
@@ -131,7 +131,7 @@ public class Figure {
     }
 
     /**
-     * Фигура _-
+      Фигура _-
      */
     public int[][] S(){
         clearCord();
@@ -152,7 +152,7 @@ public class Figure {
     }
 
     /**
-     * Отрисовываем ботинок в другую сторону
+      Отрисовываем ботинок в другую сторону
      */
     public int[][] L(){
         clearCord();

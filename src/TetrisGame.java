@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 /**
-  Есть недоработки, в перспективе надеюсь будет на Fx=)
+   Есть недоработки, в перспективе надеюсь будет на Fx=)
  */
 
 public class TetrisGame extends JPanel implements ActionListener{
@@ -32,7 +32,7 @@ public class TetrisGame extends JPanel implements ActionListener{
     private Color color;
     private int esc; // решает останавливать или продолжать игру при нажатии esc
     /**
-     * Текущее место нахождение матрицы cord на поле
+      Текущее место нахождение матрицы cord на поле
      */
     private int locationX = SCALE*3;
     private int locationY = -30;
@@ -57,7 +57,7 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Конструктор определяющий панель
+      Конструктор определяющий панель
      */
     public TetrisGame() {
         setSize(frame.getWidth(), frame.getHeight());
@@ -67,7 +67,7 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Ход фигур тетриса
+      Ход фигур тетриса
      */
     private int[][] move(int[][] cord, int posture, boolean isLocation){
         if(figure==1){ // отрисовываем ровную фигуру ----
@@ -166,14 +166,14 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Слушатель таймера
+      Слушатель таймера
      */
     @Override
     public void actionPerformed(ActionEvent e){
         checkStop();
         if(checkGameOver()) t.stop();
         /**
-         * Если фигурка только выпадает или игра началась
+          Если фигурка только выпадает или игра началась
          */
         if(locationY == -30){
             figure = generateFigure();
@@ -181,7 +181,7 @@ public class TetrisGame extends JPanel implements ActionListener{
             locationX = SCALE*3;
         }
         /**
-         * Если достигнуто дно стакана и на клетку ниже уже стоит фигура
+          Если достигнуто дно стакана и на клетку ниже уже стоит фигура
          */
         if(locationY >=check){
             clearCord();
@@ -203,7 +203,7 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Задает цвет фигурам
+      Задает цвет фигурам
      */
     private Color figureColor(){
         switch(figure){
@@ -233,7 +233,7 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Задает цвет стоящим элементам на поле
+      Задает цвет стоящим элементам на поле
      */
     private Color fieldColor(int i, int j){
         switch(field[i][j]){
@@ -263,7 +263,7 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Проверка следующей клетки, если она уже занята то останавливаемся
+      Проверка следующей клетки, если она уже занята то останавливаемся
      */
     private void checkStop(){
         int x;
@@ -286,7 +286,7 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Добавляем на поле стоящие фигуры
+      Добавляем на поле стоящие фигуры
      */
     private void addField(){
         for(int i = 0;i<cord.length;i++){
@@ -301,8 +301,8 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Проверяет весь ряд на элементы, если ряд заполнен от 0 до 10
-     * то этот ряд удаляется и верхние стоящие ряды сдвигаются вниз
+      Проверяет весь ряд на элементы, если ряд заполнен от 0 до 10
+      то этот ряд удаляется и верхние стоящие ряды сдвигаются вниз
      */
     private void checkClears(){
         int check = 0; // проверка на заполнение всего ряда фигурками
@@ -342,20 +342,20 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Обнуляем массив
+      Обнуляем массив
      */
     private void clearCord(){
         cord = new int [4][4];
     }
 
     /**
-     * Рандомное генерирование фигуры на панели
-     * 1 - ровная фигура ----
-     * 2 - |_
-     * 3 - -|-
-     * 4 - ||
-     * 5 - -_
-     * @return число фигуры
+      Рандомное генерирование фигуры на панели
+      1 - ровная фигура ----
+      2 - |_
+      3 - -|-
+      4 - ||
+      5 - -_
+      @return число фигуры
      */
     private int generateFigure(){
         int figure;
@@ -367,7 +367,7 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Отрисовка фигур на панели
+      Отрисовка фигур на панели
      */
     @Override
     public void paint(Graphics g){
@@ -381,7 +381,7 @@ public class TetrisGame extends JPanel implements ActionListener{
             for(int j=0;j<cord[i].length;j++){ // y
                 if(cord[i][j]>0 ){
                     /**
-                     * Если фигура на дне стакана
+                      Если фигура на дне стакана
                      */
                     if(locationY >= check){
                         int x = locationX/SCALE+i; // узнаем каждый элелемент фигурки
@@ -407,8 +407,8 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Изменение позы фигуры по переменной,
-     * если posture инкрементится то поза фигуры меняется
+      Изменение позы фигуры по переменной,
+      если posture инкрементится то поза фигуры меняется
      */
     private int setPosture(int posture){
         if(figure == 1){
@@ -444,9 +444,9 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Проверка на то если фигурка изменит позу
-     * не влезет ли она в стену или другую фигурку
-     * @return true если не влезет и можно изменить позу, false если нельзя
+      Проверка на то если фигурка изменит позу
+      не влезет ли она в стену или другую фигурку
+      @return true если не влезет и можно изменить позу, false если нельзя
      */
     private boolean checkPosture(){
         int posture1 = setPosture(posture);
@@ -468,8 +468,8 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Метод определяет можно ли двигаться вправо
-     * @return Если справа есть фигурки или стенка то возвращает false иначе true
+      Метод определяет можно ли двигаться вправо
+      @return Если справа есть фигурки или стенка то возвращает false иначе true
      */
     private boolean checkRight(){
         for(int i=0;i<cord.length;i++){
@@ -490,8 +490,8 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Метод определяет можно ли двигаться влево
-     * @return Если слева есть фигурки или стенка то возвращает false иначе true
+      Метод определяет можно ли двигаться влево
+      @return Если слева есть фигурки или стенка то возвращает false иначе true
      */
     private boolean checkLeft(){
         for(int i=0;i<cord.length;i++){
@@ -512,7 +512,7 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Класс слушатель клавиатуры
+      Класс слушатель клавиатуры
      */
     class KeyBoard extends KeyAdapter{
         @Override
