@@ -67,7 +67,7 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Ход фигурок тетриса
+     * Ход фигур тетриса
      */
     private int[][] move(int[][] cord, int posture, boolean isLocation){
         if(figure==1){ // отрисовываем ровную фигуру ----
@@ -117,7 +117,7 @@ public class TetrisGame extends JPanel implements ActionListener{
 
         }
 
-        else if(figure==4){ // отрисовываем квадратик ||
+        else if(figure==4){ // отрисовываем квадрат ||
             cord = f.O();
             check = 525;
             repaint();
@@ -181,7 +181,7 @@ public class TetrisGame extends JPanel implements ActionListener{
             locationX = SCALE*3;
         }
         /**
-         * Если достигнуто дно стакана и на клетку ниже уже стоит фигурка
+         * Если достигнуто дно стакана и на клетку ниже уже стоит фигура
          */
         if(locationY >=check){
             clearCord();
@@ -203,7 +203,7 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Задает цвет фигуркам
+     * Задает цвет фигурам
      */
     private Color figureColor(){
         switch(figure){
@@ -286,7 +286,7 @@ public class TetrisGame extends JPanel implements ActionListener{
     }
 
     /**
-     * Добавляем на поле стоящие фигурки
+     * Добавляем на поле стоящие фигуры
      */
     private void addField(){
         for(int i = 0;i<cord.length;i++){
@@ -355,7 +355,7 @@ public class TetrisGame extends JPanel implements ActionListener{
      * 3 - -|-
      * 4 - ||
      * 5 - -_
-     * @return число фигурки
+     * @return число фигуры
      */
     private int generateFigure(){
         int figure;
@@ -381,7 +381,7 @@ public class TetrisGame extends JPanel implements ActionListener{
             for(int j=0;j<cord[i].length;j++){ // y
                 if(cord[i][j]>0 ){
                     /**
-                     * Если фигурка на дне стакана
+                     * Если фигура на дне стакана
                      */
                     if(locationY >= check){
                         int x = locationX/SCALE+i; // узнаем каждый элелемент фигурки
